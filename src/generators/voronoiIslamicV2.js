@@ -3,73 +3,22 @@
 VORONOI-SEEDED ISLAMIC TILING V2 (HYBRID)
 ========================================
 * Composition: Seed Points -> nearestPoint (cell lookup) -> Construction
-* Circle -> Radial Divisions -> Star Polygon (silhouette) -> Distance Field
-* (signed, to the silhouette's own boundary) -> Colour Mapping.
+* Circle -> Radial Divisions -> Star Polygon (silhouette) -> ring bands via
+* islamic-svg.js's own offset-polygon geometry -> Colour Mapping. See
+* docs/generators/voronoi-islamic-v2.md for the research question and full
+* design reasoning, and voronoiIslamic.js (the original version of this
+* hybrid) for the more elaborate take this one intentionally simplifies
+* away from — every step after cell lookup here is islamic.js's own
+* construction, reused completely unmodified.
 *
-* Deliberately the simplest possible version of this hybrid: Voronoi's own
-* Seed Points + nearest-seed lookup takes over exactly the one job
-* islamic.js's own Grid step did (deciding which cell a pixel belongs to,
-* and that cell's own centre) — every step after that is islamic.js's own
-* construction, reused completely unmodified. See voronoiIslamic.js (the
-* original version of this hybrid) for a more elaborate take that also
-* scales each cell's medallion to its own local Voronoi spacing; this file
-* intentionally does not do that, or anything else beyond the cell-lookup
-* swap, so the two versions demonstrate different points on the same
-* research question (does islamic.js's construction generalise from a
-* regular grid to an irregular point source) — v1 asks "what's the least
-* new geometry needed to make it look coherent", v2 asks "what does it look
-* like if nothing downstream of cell placement changes at all".
-*
-* Because every cell uses the exact same fixed radius (`tileSize * scale`,
-* islamic.js's own formula, not adapted to each cell's own irregular
-* spacing), medallions from densely-packed cells can overlap and medallions
-* in sparse regions can leave gaps — an expected, honest consequence of not
-* introducing any new geometry, not a bug to fix.
-*
-* - `numCells`: seed points are a plain, unconstrained scatter across the
-*   canvas (lib/seedPoints.js's generateSeedPoints — a Poisson process, the
-*   same primitive voronoiIslamic.js/v1 and voronoi.js itself both use),
-*   not laid out on any underlying grid. An earlier version placed one
-*   point per cell of a regular grid instead, each nudged by a bounded
-*   "jitter" offset — deliberately removed: it added a grid-shaped
-*   constraint on top of Voronoi's own natural cell variation for no real
-*   visual benefit, when a plain scatter is both simpler and already what
-*   a Voronoi diagram means. Uneven cell sizes (a real consequence of a
-*   Poisson process having no bound on how close two points can land, or
-*   how large a gap can appear by chance) are accepted as this hybrid's own
-*   honest character, not something to be engineered away.
-*
-* - `randomRotation`: each cell's medallion gets its own independently
-*   randomised rotation (cellRotationOffset below — an xorshift32 stream
-*   mixed with the cell's own point index, the same per-cell RNG technique
-*   voronoiIslamic.js's cellVariation uses) instead of every medallion
-*   sharing one rotation. `rotation` (the existing Flipped toggle) composes
-*   with it by simple addition rather than the two being mutually
-*   exclusive: off + off is the plain unrotated construction, off + Flipped
-*   is a single shared 180/segments rotation (as before), on + off is each
-*   cell's own random rotation, and on + Flipped adds that same 180/segments
-*   flip on top of whatever each cell's own random rotation already was —
-*   flipping the random result, not replacing it. Every combination of the
-*   two toggles is a meaningful, valid state; there's nothing to guard
-*   against selecting "at the same time" once they're modelled as two
-*   independent, additive knobs rather than one 3-way choice.
-*
-* - Ring construction: this now reuses svg/islamic-svg.js's own ring
-*   geometry (lib/polygonOffset.js's buildOffsetBands/offsetPolygon)
-*   instead of islamic.js's plain raster signed-distance banding. The two
-*   are genuinely different constructions, not just different renderers of
-*   the same shape: islamic.js's raster banding measures each pixel's
-*   distance to the *original* silhouette only, rounded to the nearest
-*   step multiple — a smooth, rounded contour. islamic-svg.js's rings are
-*   each a *true perpendicular offset polygon*, with their own sharp,
-*   independently reconstructed vertices (mitered, per-edge) — at two or
-*   more bands out, those reconstructed edges start crossing each other,
-*   producing genuinely new self-intersecting shapes. Since Islamic
-*   Rosette is `nativeFormat: "vector"` and always renders via
-*   islamic-svg.js in the app, that's the "normal Islamic pattern" this
-*   hybrid is actually being compared against — reusing its own ring
-*   construction (evaluated per-pixel here, rather than stroked as SVG)
-*   is what makes that comparison fair.
+* Implementation notes not covered by the doc:
+* - Every cell uses the same fixed radius (`tileSize * scale`), not adapted
+*   to local spacing, so densely-packed cells can overlap and sparse ones
+*   can gap — an expected consequence of that choice, not a bug.
+* - `randomRotation` composes with `rotation` (the Flipped toggle) by simple
+*   addition rather than the two being mutually exclusive: each cell's own
+*   random rotation (cellRotationOffset below, deterministic from seed +
+*   point index) gets Flipped's shared offset added on top when both are on.
 */
 import { generateSeedPoints } from "./lib/seedPoints.js";
 import { nearestPoint, nearestSegmentDistSq } from "./lib/distanceField.js";

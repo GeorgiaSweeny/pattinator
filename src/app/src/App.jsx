@@ -92,7 +92,7 @@ export default function App() {
    const skipNextParamResetRef = useRef(false);
    // Welcome and Onboarding are one combined first-visit flow gated by the
    // same "seen" flag: Welcome's "Take the tour" hands off into Onboarding,
-   // "Skip" dismisses both. "Retake Tutorial" re-opens the same flow.
+   // "Skip" dismisses both. "Tutorial" re-opens the same flow.
    const [showWelcome, setShowWelcome] = useState(() => !hasSeenOnboarding());
    const [showOnboarding, setShowOnboarding] = useState(false);
    // Starts collapsed; expanding this and showing Pattern Documentation are
@@ -226,7 +226,7 @@ export default function App() {
                   Gallery
                </button>
                <button className="btn menu-bar-node-library" onClick={() => setShowWelcome(true)}>
-                  Retake Tutorial
+                  Tutorial
                </button>
                <div className="menu-bar-dropdown" ref={evaluationMenuRef}>
                   <button
@@ -262,7 +262,7 @@ export default function App() {
                         <a
                            className="menu-bar-dropdown-item"
                            role="menuitem"
-                           href="/evaluation/study-results.html"
+                           href={`${import.meta.env.BASE_URL}evaluation/study-results.html`}
                            target="_blank"
                            rel="noreferrer"
                            onClick={() => setShowEvaluationMenu(false)}
@@ -272,7 +272,7 @@ export default function App() {
                         <a
                            className="menu-bar-dropdown-item"
                            role="menuitem"
-                           href="/evaluation/study2-results.html"
+                           href={`${import.meta.env.BASE_URL}evaluation/study2-results.html`}
                            target="_blank"
                            rel="noreferrer"
                            onClick={() => setShowEvaluationMenu(false)}

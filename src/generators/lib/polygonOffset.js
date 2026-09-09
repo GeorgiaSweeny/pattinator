@@ -50,7 +50,7 @@ export function offsetPolygon(outline, d) {
    return Float32Array.from(out);
 }
 
-export function minRadius(poly) {
+function minRadius(poly) {
    let min = Infinity;
    for (let i = 0; i < poly.length; i += 2) min = Math.min(min, Math.hypot(poly[i], poly[i + 1]));
    return min;

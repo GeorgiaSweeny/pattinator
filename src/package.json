@@ -5,7 +5,9 @@
   "scripts": {
     "test": "vitest run",
     "bench": "node generators/__benchmarks__/benchmark.js",
-    "structure-metrics": "node generators/__benchmarks__/structureMetrics.js"
+    "structure-metrics": "node generators/__benchmarks__/structureMetrics.js",
+    "spectrum-metrics": "node generators/__benchmarks__/spectrumMetrics.js",
+    "spectrum-structural": "node generators/__benchmarks__/spectrumStructural.js"
   },
   "devDependencies": {
     "fast-check": "^4.8.0",

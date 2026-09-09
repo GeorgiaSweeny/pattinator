@@ -205,7 +205,7 @@ export const GENERATOR_DOCS = {
 // uses it, so one description per name covers every pattern that declares
 // it. PARAM_DOC_OVERRIDES below covers the few names that diverge by
 // generator (`mode`, `scale`).
-export const PARAM_DOCS = {
+const PARAM_DOCS = {
    scale: "Zooms the underlying field in or out — larger values sample it more coarsely, producing bigger, smoother features; smaller values sample it more finely, producing smaller, busier detail.",
    octaves: "How many layered noise samples (each at double the frequency and half the strength of the last) are summed together. 1 gives smooth blobs; higher values add progressively finer detail on top, the same way musical overtones add texture to a fundamental note.",
    lacunarity: "How much the frequency multiplies between successive octaves. Higher values make each added octave's detail noticeably finer-grained than the one before, rather than closely spaced.",
@@ -256,7 +256,7 @@ export const PARAM_DOCS = {
 // meaning genuinely diverges by generator, keyed "generator:param". Falls
 // back to PARAM_DOCS[param] when no override exists for the current
 // generator.
-export const PARAM_DOC_OVERRIDES = {
+const PARAM_DOC_OVERRIDES = {
    "islamic:scale": "Resizes the medallion within its own tile, as a fraction of the tile's size — capped below half the tile's width so it always stays a self-contained motif with no overlap into neighbouring tiles.",
    "voronoiIslamic:scale": "Resizes each cell's medallion, as a fraction of that specific cell's own distance to its nearest neighbouring seed — so every medallion stays sized appropriately to its own irregular cell rather than one fixed size for every cell.",
    "voronoiIslamicV2:scale": "Exactly Islamic Rosette's own Scale: every medallion uses the same fixed radius (Tile Size × Scale) regardless of its own cell's size, unlike the original Voronoi-Seeded Islamic Tiling's per-cell scaling — so medallions can overlap in dense regions or leave gaps in sparse ones.",

@@ -6,6 +6,7 @@ tsconfig.base.json
 .DS_Store
 dissertation/
 proposal/
+src/generators/__benchmarks__/*.results.json
 src/generators/__benchmarks__/results.json
 src/exports/
 

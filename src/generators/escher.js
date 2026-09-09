@@ -12,20 +12,12 @@ ESCHER TYPE I (TRANSLATION) TESSELLATION
 *     NGV-Digital-Creatives-Tessellate-by-Code-Workshop-Instructions.pdf
 *
 * Composition: Base Tile (tileSize) -> Edge Deformation (bump) -> Colour Mapping.
-* See src/generators/lib/ — bump/tones are shared node-shaped primitives, not
-* reimplemented here.
+* See docs/generators/escher.md for the construction rationale and prior art.
 *
-* Algorithm (pixel-by-pixel):
-*   For pixel (x, y) with tile size S:
-*     dx = bumpX( (y mod S) / S ) * amplitude   ← horizontal edge warp at this y
-*     dy = bumpY( (x mod S) / S ) * amplitude   ← vertical edge warp at this x
-*     col = floor( (x - dx) / S )
-*     row = floor( (y - dy) / S )
-*   Tile parity = (col + row) % tones.length → tone index
-*
-* Correctness: the deformation is periodic with period S, so the right edge of
-* any tile is exactly the left edge of its right neighbour (translated S in x).
-* The amplitude must be < S/2 to prevent self-overlap; we clamp to 0.38*S.
+* The deformation is periodic with period S, so the right edge of any tile is
+* exactly the left edge of its right neighbour (translated S in x) — tiles
+* always interlock regardless of amplitude. Amplitude is clamped to 0.38*S,
+* comfortably under the S/2 point where a tile would start overlapping itself.
 */
 import { bump } from "./lib/edgeDeformation.js";
 import { toneSet } from "./lib/colourMapping.js";

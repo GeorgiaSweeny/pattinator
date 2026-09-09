@@ -113,7 +113,7 @@ export function blankSvg(width, height, params = {}) {
 // same extent the real render will fill. Small enough that if the pattern's
 // initial shape ever changes (a different generator, a different base
 // polygon), the marker is unmistakably "just a preview", not the pattern.
-export const BASE_SHAPE_FRACTION = 0.4;
+const BASE_SHAPE_FRACTION = 0.4;
 
 function baseShapeRect(width, height) {
    const size = Math.min(width, height) * BASE_SHAPE_FRACTION;
