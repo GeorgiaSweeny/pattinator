@@ -14,7 +14,8 @@ export default function Welcome({ onStartTour, onSkip }) {
    return (
       <div className="welcome-root">
          <div className="welcome-card">
-            <h1 className="welcome-title">Algorithmic Pattern Explorer</h1>
+            <h1 className="welcome-title">Pattinator</h1>
+            <p className="welcome-subtitle">An algorithmic pattern explorer</p>
             <p className="welcome-body">
                This app shows you how generative art patterns are built, one computational step at a
                time. Pick a pattern, watch it come together stage by stage, and see explanations of

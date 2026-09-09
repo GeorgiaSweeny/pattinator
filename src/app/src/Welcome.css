@@ -19,9 +19,15 @@
 }
 
 .welcome-title {
-   margin: 0 0 14px;
+   margin: 0 0 2px;
    font-size: 22px;
    color: #111827;
+}
+
+.welcome-subtitle {
+   margin: 0 0 14px;
+   font-size: 13px;
+   color: #6b7280;
 }
 
 .welcome-body {

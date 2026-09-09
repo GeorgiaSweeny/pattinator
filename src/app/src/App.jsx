@@ -214,7 +214,7 @@ export default function App() {
    return (
       <div className="app">
          <header className="menu-bar">
-            <span className="menu-bar-title">Algorithmic Pattern Explorer</span>
+            <span className="menu-bar-title">Pattinator</span>
             <div className="menu-bar-actions">
                <button
                   className="btn menu-bar-node-library menu-bar-doc-library"

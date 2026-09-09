@@ -1,14 +1,20 @@
-# Algorithmic Pattern Explorer
+# Pattinator
 
 > An MSc dissertation project investigating the compositional structure of generative pattern algorithms, demonstrated through an interactive educational interface.
 
-**Click to run [Algorithmic Pattern Explorer](https://georgiasweeny.github.io/algorithmic-pattern-explorer/) app**
+**Click to run the [Pattinator app](https://georgiasweeny.github.io/algorithmic-pattern-explorer/)** — an algorithmic pattern explorer that walks you through how each generator is built, step by step
+
+*Best viewed in Chrome — the only browser the app is developed and tested against. It has not been verified to behave correctly in Safari, Microsoft Edge, or other browsers.*
 
 ---
 
 ## Overview
 
-Algorithmic Pattern Explorer's primary research contribution is algorithmic: it
+Generative pattern software typically hides how a pattern is actually built
+behind a handful of adjustable settings, leaving a user free to change the
+picture but never to see the mechanism producing it.
+
+Pattinator's primary research contribution is algorithmic: it
 investigates whether a small, fixed vocabulary of composition patterns — drawn
 from combinator-style function composition — can describe how a spectrum of
 generative pattern algorithms (stochastic → deterministic) is built from a
@@ -17,7 +23,8 @@ minimal library of reusable primitives. See
 for the full framing, the primitive library, and the composition analysis
 against the current generators.
 
-The educational web interface is secondary: a demonstration and evaluation
+The educational web interface — the Pattinator app, an algorithmic pattern
+explorer built as a node graph — is secondary: a demonstration and evaluation
 vehicle that shows this compositional structure is not only internally correct
 (verified by the property-based test suite in `src/generators/__tests__/`), but
 also externally legible — that a learner using the interactive workflow view can
@@ -31,6 +38,7 @@ pattern.
 * [`docs/GENERATOR_CONTRACT.md`](docs/GENERATOR_CONTRACT.md) — the interface every generator satisfies, verified by the property-based test suite.
 * [`docs/benchmark-results.md`](docs/benchmark-results.md) — empirical time-complexity analysis per generator, including a couple of counter-intuitive findings.
 * [`docs/MOSCOW_PRIORITIES.md`](docs/MOSCOW_PRIORITIES.md) — consolidated MoSCoW priority table across the full project scope (generators, explorer interface, educational UX, evaluation), tracing back to `docs/PROJECT_SPECIFICATION.md` and the educator user-stories doc.
+* [`docs/spectrum-structural-results.md`](docs/spectrum-structural-results.md) — checks each generator's declared stochastic/deterministic `spectrum` value both empirically (re-seeding) and structurally (composition analysis).
 
 ---
 
@@ -113,9 +121,10 @@ each generator's own composition-table row.
 | --- | --- | --- | --- |
 | **Perlin Sierpinski** (`recursiveNoise.js`) | Recursive subdivision domain-warped by Perlin noise; `amplitude = 0` is byte-identical to Sierpinski Carpet, a falsifiable deterministic baseline | Repeat, whose step is a Fork → Atop — a genuinely new *shape*, zero new primitives | ✅ Implemented |
 | **Voronoi Islamic** (`voronoiIslamic.js`) | Islamic Geometric Patterns' rosette construction, reused unmodified, seeded from Voronoi's stochastic point source instead of a regular grid | Constant-bind → Atop → Atop → Fork → Atop — one new primitive (`nearestNeighbourDistances`), zero new patterns | ✅ Implemented |
+| **Voronoi Islamic (Improved)** (`voronoiIslamicV2.js`) | The same rosette-on-Voronoi idea as above, deliberately simplified: cell lookup is the only thing that changes, with no per-cell radius adaptation — see [`docs/generators/voronoi-islamic-v2.md`](docs/generators/voronoi-islamic-v2.md) for how the two versions answer different questions | Same pattern as Voronoi Islamic, minus the extra per-cell adaptation stage | ✅ Implemented |
 
-Both are raster-only (`nativeFormat: "raster"` — no SVG renderer; see each
-generator's own header comment for why) and fully covered by the same
+All three are raster-only (`nativeFormat: "raster"` — no SVG renderer; see
+each generator's own header comment for why) and fully covered by the same
 property-based test suite standard as the core seven.
 
 ### Additional generators
@@ -163,6 +172,7 @@ Users can:
 * Observe live updates to generated patterns
 * Learn the computational concepts represented by each operation
 * Compare stochastic and deterministic approaches
+* Browse a curated Gallery of example patterns
 
 The educational interface transforms procedural generation from a hidden implementation into an explorable learning experience.
 
@@ -197,6 +207,7 @@ Hybrid generators (secondary research question — see Hybrid generators above):
 
 * Perlin Sierpinski
 * Voronoi Islamic
+* Voronoi Islamic (Improved)
 
 ### Algorithm Explorer
 
@@ -233,7 +244,8 @@ independently through the analysis in
 [`docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`](docs/ALGORITHMIC_COMPOSITION_RESEARCH.md)
 and the property-based test suite (`src/generators/__tests__/`).
 
-The project will be evaluated through user testing focusing on:
+The project was evaluated through two user studies (see `docs/evaluation/`
+for the full design, instruments, and results), focusing on:
 
 * Usability
 * Learning experience
@@ -332,14 +344,17 @@ These additions would broaden the range of computational paradigms available for
 
 ## Project Status
 
-🚧 **Active MSc Dissertation Project**
+**Complete — MSc Dissertation Project**
 
-Current development is focused on:
-
-* Analysing generator composition against the vocabulary in
+* Generator composition analysed against the vocabulary in
   [`docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`](docs/ALGORITHMIC_COMPOSITION_RESEARCH.md)
-  (primary research contribution)
-* Implementing the core generators and property-based test suite
-* Building the React Flow algorithm explorer (demonstration layer)
-* Developing the educational layer
-* Designing and conducting user evaluation of the demonstration layer
+  (primary research contribution), with empirical and structural checks on
+  the declared stochastic/deterministic `spectrum` values in
+  [`docs/spectrum-metrics-results.md`](docs/spectrum-metrics-results.md) and
+  [`docs/spectrum-structural-results.md`](docs/spectrum-structural-results.md)
+* Core and hybrid generators implemented, covered by the property-based test
+  suite
+* React Flow algorithm explorer and educational layer built, including the
+  pattern Gallery
+* User evaluation of the demonstration layer designed and conducted — see
+  `docs/evaluation/` for both studies' results
