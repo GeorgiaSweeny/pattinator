@@ -11,11 +11,11 @@ import react from "@vitejs/plugin-react";
 // evaluation/*.test.js) don't need a DOM and pass under either environment;
 // jsdom is required for the new component-level tests (App.test.jsx etc.)
 // that actually render React components via @testing-library/react.
-// base: "/algorithmic-pattern-explorer/" makes built asset URLs resolve
-// correctly under GitHub Pages project-site hosting (only "build" needs
-// this — "serve" must stay at "/" for the dev server).
+// base: "/pattinator/" makes built asset URLs resolve correctly under
+// GitHub Pages project-site hosting (only "build" needs this — "serve"
+// must stay at "/" for the dev server).
 export default defineConfig(({ command }) => ({
-   base: command === "build" ? "/algorithmic-pattern-explorer/" : "/",
+   base: command === "build" ? "/pattinator/" : "/",
    plugins: [react()],
    server: {
       fs: { allow: ["../.."] },

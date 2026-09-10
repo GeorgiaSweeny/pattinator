@@ -2,7 +2,7 @@
 
 > An MSc dissertation project investigating the compositional structure of generative pattern algorithms, demonstrated through an interactive educational interface.
 
-**Click to run the [Pattinator app](https://georgiasweeny.github.io/algorithmic-pattern-explorer/)** — an algorithmic pattern explorer that walks you through how each generator is built, step by step
+**Click to run the [Pattinator app](https://georgiasweeny.github.io/pattinator/)** — an algorithmic pattern explorer that walks you through how each generator is built, step by step
 
 *Best viewed in Chrome — the only browser the app is developed and tested against. It has not been verified to behave correctly in Safari, Microsoft Edge, or other browsers.*
 

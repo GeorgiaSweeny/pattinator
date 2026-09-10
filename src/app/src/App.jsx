@@ -29,7 +29,7 @@ import "./App.css";
 
 const nodeTypes = { workflow: WorkflowNode };
 const CANVAS_LABEL = `${CANVAS.WIDTH} × ${CANVAS.HEIGHT} px`;
-const GITHUB_REPO_URL = "https://github.com/GeorgiaSweeny/algorithmic-pattern-generator";
+const GITHUB_REPO_URL = "https://github.com/GeorgiaSweeny/pattinator";
 
 // Human-readable labels for CATEGORY_COLOURS's keys, in pipeline order —
 // the legend under the workflow graph.
