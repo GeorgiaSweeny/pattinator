@@ -5,7 +5,7 @@ EVALUATION OVERLAY
 * Full-screen research-instrument quiz overlay (dissertation evaluation, not
 * a learner-facing assessment) — pre/post administration of the same
 * question bank, with no score shown until the whole session is downloaded
-* as JSON. See docs/APP_IMPLEMENTATION_NOTES.md for the full rationale.
+* as JSON. See docs/design/APP_IMPLEMENTATION_NOTES.md for the full rationale.
 * `study` (1 or 2) selects which instrument/question bank/storage key this
 * instance runs — App.jsx mounts one instance per study.
 */
@@ -294,7 +294,7 @@ export default function EvaluationOverlay({ onClose, study = 1 }) {
 
    function submitQuiz(answers) {
       // Score is recorded but never read back here — kept hidden until
-      // download (see docs/APP_IMPLEMENTATION_NOTES.md).
+      // download (see docs/design/APP_IMPLEMENTATION_NOTES.md).
       recordQuizPass(phase, config.questions, answers, config.storageKey);
       if (phase === "pre") setHasPre(true);
       else setHasPost(true);

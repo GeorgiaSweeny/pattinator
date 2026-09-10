@@ -58,7 +58,7 @@ increment that both changes the rendered shape and always lands back on
 one of the shape's own reflection axes — alternating between a tip-up
 and a waist-up reading of the same star at each step (e.g. `segments =
 4`: diamond and square are the two positions). See
-`docs/ISLAMIC_PATTERN_CONSTRUCTION.md`'s `rotation` section for the full
+`docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`'s `rotation` section for the full
 reasoning, including the request's original, more literal phrasing
 ("360/n-fold degrees") and why that was checked mathematically and
 flagged back before implementing anything.

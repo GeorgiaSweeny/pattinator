@@ -17,7 +17,7 @@ PATTERN REGISTRY
 */
 
 // Shared tones + colour1..colour5 block for tone-indexed vector generators
-// (voronoi, grid, escher, islamic) — see docs/PATTERN_REGISTRY_NOTES.md.
+// (voronoi, grid, escher, islamic) — see docs/design/PATTERN_REGISTRY_NOTES.md.
 function tonesAndColourParams(defaultTones = "2") {
    return [
       { param: "tones", control: "select", label: "Tones",
@@ -34,7 +34,7 @@ function tonesAndColourParams(defaultTones = "2") {
 }
 
 // colour1 (light, +1) + colour2 (dark, -1) for patterns with no `tones`
-// concept — see docs/PATTERN_REGISTRY_NOTES.md.
+// concept — see docs/design/PATTERN_REGISTRY_NOTES.md.
 function twoColourParams() {
    return [
       { param: "colour1", control: "color", label: "Colour 1 (light)", value: "#ffffff" },
@@ -43,7 +43,7 @@ function twoColourParams() {
 }
 
 // Ordered simplest -> most complex; Hybrid entries listed last, after both
-// of their ingredient generators — see docs/PATTERN_REGISTRY_NOTES.md.
+// of their ingredient generators — see docs/design/PATTERN_REGISTRY_NOTES.md.
 export const REGISTRY = [
 
    // ── Wave — mostly deterministic ───────────────────────────────────────────
@@ -248,7 +248,7 @@ export const REGISTRY = [
          // Snapped internally to 180/segments, which is exactly half the
          // shape's own 360/segments rotational period — so, regardless of
          // segments, there are only ever 2 distinct snapped appearances
-         // (0 and 180/segments) — see docs/PATTERN_REGISTRY_NOTES.md.
+         // (0 and 180/segments) — see docs/design/PATTERN_REGISTRY_NOTES.md.
          { param: "rotation",  control: "toggle", label: "Rotation",
            onLabel: "Flipped", offLabel: "Not flipped",
            onValue: (p) => 180 / Math.max(3, Math.round(p.segments ?? 8)), value: 0 },
@@ -269,7 +269,7 @@ export const REGISTRY = [
          // Classic carpet uses 3, but the construction generalises to any
          // subdivisions >= 2 (see recursive.js), so it's exposed rather than fixed.
          { param: "subdivisions", archetype: "Detail", value: 3, map: [2, 6] },
-         // firstOccurrenceOnly: see docs/PATTERN_REGISTRY_NOTES.md.
+         // firstOccurrenceOnly: see docs/design/PATTERN_REGISTRY_NOTES.md.
          { param: "depth",        archetype: "Complexity", value: 4, map: [1, 6], firstOccurrenceOnly: true },
          ...twoColourParams(),
       ],
@@ -284,7 +284,7 @@ export const REGISTRY = [
       nativeFormat: "vector",
       params: [
          { param: "mode",         value: "grid" },
-         // firstOccurrenceOnly: see docs/PATTERN_REGISTRY_NOTES.md.
+         // firstOccurrenceOnly: see docs/design/PATTERN_REGISTRY_NOTES.md.
          { param: "depth",        archetype: "Complexity", value: 3, map: [1, 6], firstOccurrenceOnly: true },
          { param: "subdivisions", archetype: "Detail",     value: 4, map: [2, 9] },
          ...twoColourParams(),
@@ -302,7 +302,7 @@ export const REGISTRY = [
       spectrum:     0.5,
       nativeFormat: "raster",
       params: [
-         // firstOccurrenceOnly: see docs/PATTERN_REGISTRY_NOTES.md — depth
+         // firstOccurrenceOnly: see docs/design/PATTERN_REGISTRY_NOTES.md — depth
          // and seed are single shared values, so editing them from a later
          // Noise/Subdivide node would silently rewrite the whole pattern;
          // they're shown (and only editable) on the first occurrence, with
@@ -372,14 +372,14 @@ export const REGISTRY = [
          { param: "frequency", archetype: "Detail",     value: 2,    map: [1, 6]    },
          { param: "lineWidth", archetype: "Threshold",  value: 0.05, map: [0.01, 0.15] },
          // Reused from islamic.js's construction, held uniform across cells
-         // by default — see docs/PATTERN_REGISTRY_NOTES.md. Only 2 distinct
+         // by default — see docs/design/PATTERN_REGISTRY_NOTES.md. Only 2 distinct
          // snapped appearances regardless of segments (see islamic-rosette's
          // own rotation param above).
          { param: "rotation",  control: "toggle", label: "Rotation",
            onLabel: "Flipped", offLabel: "Not flipped",
            onValue: (p) => 180 / Math.max(3, Math.round(p.segments ?? 8)), value: 0 },
          // Opt-in per-cell divergence from the base segments/rotation above —
-         // see docs/PATTERN_REGISTRY_NOTES.md.
+         // see docs/design/PATTERN_REGISTRY_NOTES.md.
          { param: "variation", archetype: "Randomness", value: 0,   map: [0, 1] },
          { param: "seed",      archetype: "Seed",       value: 1337 },
       ],

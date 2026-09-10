@@ -24,7 +24,7 @@ SPECTRUM METRICS — EMPIRICAL CHECK ON THE DECLARED spectrum VALUE
 * land in [0, 1] before being read as a stochastic fraction.
 *
 * Run with: npm run spectrum-metrics (from src/). Writes raw results to
-* __benchmarks__/spectrumMetrics.results.json; docs/spectrum-metrics-results.md
+* __benchmarks__/spectrumMetrics.results.json; docs/results/spectrum-metrics-results.md
 * holds the interpreted numbers and discussion.
 */
 import { writeFileSync } from "node:fs";

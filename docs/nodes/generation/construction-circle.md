@@ -50,7 +50,7 @@ free, user-adjustable parameter (added 2026-08-20, registry range
 originally a hardcoded `0.42 × tileSize` constant with no exposed
 control; turning it into a parameter was filling in what this node was
 already conceptually for (define the radius), not adding a new
-capability — see `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`'s `scale`
+capability — see `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`'s `scale`
 section. Capped below `0.5 × tileSize` so the medallion can't exceed a
 square tile's own half-width and stop being a self-contained motif — a
 rosette is one bounded star+petal shape, not an infinite lattice of

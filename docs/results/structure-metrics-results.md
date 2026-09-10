@@ -50,7 +50,7 @@ at the deepest; that was revised Aug-24 to go from a `LEVEL_AMPLITUDE_FLOOR`
 (30%) fraction of `amplitude` up to the full value instead, because the
 exact-zero floor made the corresponding Noise node in the ReactFlow
 workflow view look like it had no effect regardless of `amplitude` — see
-`docs/plan-checklist.md`'s Aug-24 entry. The table below is the Aug-24
+`docs/planning/plan-checklist.md`'s Aug-24 entry. The table below is the Aug-24
 re-run; `amplitude = 0` is unchanged from every previous version (the
 ramp still multiplies to exactly `0` there regardless of the floor
 fraction), but every nonzero row shifted slightly from the Aug-21 numbers,

@@ -10,7 +10,7 @@ project. It merges three sources that each carry a partial view of priority:
   44 UX/pedagogy user stories already tagged Must/Should/Could/Future
 
 Where the source docs disagreed on emphasis, priority here follows
-[`docs/plan-checklist.md`](plan-checklist.md)'s "Priorities if time runs short"
+[`docs/planning/plan-checklist.md`](plan-checklist.md)'s "Priorities if time runs short"
 ranking, since that's the one built under the actual time constraint.
 
 Priority definitions used throughout:
@@ -51,11 +51,11 @@ Priority definitions used throughout:
 | Item | Priority | Notes |
 |---|---|---|
 | Perlin-perturbed recursive subdivision hybrid | Must | Done — `recursiveNoise.js` (`perlin-sierpinski`). `amplitude = 0` is byte-identical to Sierpinski Carpet, a falsifiable baseline; needed a genuinely new composition *shape* (Repeat whose step is a Fork) but zero new primitives. `scale`/`octaves` (noise.js's own params) exposed 2026-08-21 for a richer parameter sweep. |
-| Voronoi-seeded Islamic tiling hybrid | Must | Done — `voronoiIslamic.js` (`voronoi-islamic`), built 2026-08-21. Selected over the Escher-tile-placement variant below as the more direct test of the primary RQ (does the "which cell → build a rosette there" pipeline generalise from a regular to a stochastic point source, downstream construction held fixed). One new primitive (`nearestNeighbourDistances`), zero new patterns — full reasoning in `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`. Opt-in per-cell `variation` param added same day for visual range, default 0 (exact identity, doesn't disturb the original comparison). |
+| Voronoi-seeded Islamic tiling hybrid | Must | Done — `voronoiIslamic.js` (`voronoi-islamic`), built 2026-08-21. Selected over the Escher-tile-placement variant below as the more direct test of the primary RQ (does the "which cell → build a rosette there" pipeline generalise from a regular to a stochastic point source, downstream construction held fixed). One new primitive (`nearestNeighbourDistances`), zero new patterns — full reasoning in `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`. Opt-in per-cell `variation` param added same day for visual range, default 0 (exact identity, doesn't disturb the original comparison). |
 | Property tests for built hybrids | Must | Done — same rigor bar as the core 7 generators (`recursiveNoise.property.test.js`, `voronoiIslamic.property.test.js`, plus `lib.seedPoints.test.js` for the one new primitive). |
 | Voronoi-seeded Escher tessellation hybrid (random partition drives tile placement) | Could | Not built — distinct from the Voronoi Islamic row above (that one seeds Islamic Rosette's construction, not Escher's). Deferred per `plan-checklist.md`'s Aug 7-9 cut order; the other two hybrids don't depend on it. |
 | Noise/reaction-diffusion-driven Islamic pattern hybrid | Could | Cut-order #3 per plan-checklist.md — other two hybrids don't depend on it. |
-| Entropy/structure metrics across hybrid params | Must | Done — `structureMetrics.js`/`docs/structure-metrics-results.md`, sweeps `recursiveNoise.js`'s `amplitude` against edge density and block-pattern entropy; both increase monotonically, direct quantitative evidence for the continuous stochastic/deterministic spectrum claim. |
+| Entropy/structure metrics across hybrid params | Must | Done — `structureMetrics.js`/`docs/results/structure-metrics-results.md`, sweeps `recursiveNoise.js`'s `amplitude` against edge density and block-pattern entropy; both increase monotonically, direct quantitative evidence for the continuous stochastic/deterministic spectrum claim. |
 | Benchmark suite extended to cover hybrids | Must | Done — `benchmark.js`'s `REPRESENTATIVE_PARAMS`/`PARAM_SWEEPS` cover both `recursiveNoise` and `voronoiIslamic`. |
 
 ## 3. Algorithm Explorer / Demonstration Interface
@@ -144,7 +144,7 @@ are natural next steps rather than deliberately excluded:
 * Additional generative systems: L-Systems, reaction–diffusion, cellular automata, agent-based systems
 * Aperiodic monotile tiling (hat / spectre, Smith et al. 2023's resolution of
   the Einstein problem) — references and feasibility assessment in
-  `docs/EINSTEIN_APERIODIC_STRETCH.md`; likely needs a genuinely new
+  `docs/research-plans/EINSTEIN_APERIODIC_STRETCH.md`; likely needs a genuinely new
   composition pattern (hierarchical substitution) beyond atop/fork/constant-
   bind/fold/repeat, so treated as a vocabulary stress-test rather than a
   near-term build

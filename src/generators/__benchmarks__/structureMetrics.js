@@ -15,7 +15,7 @@ STRUCTURE/ENTROPY METRICS — SECONDARY RQ EMPIRICAL CONTENT
 *     near 4 bits (log2(16)) = noise-dominated.
 *
 * Run with: npm run structure-metrics (from src/). Writes raw results to
-* __benchmarks__/structureMetrics.results.json; docs/structure-metrics-results.md
+* __benchmarks__/structureMetrics.results.json; docs/results/structure-metrics-results.md
 * holds the interpreted numbers.
 */
 import { writeFileSync } from "node:fs";

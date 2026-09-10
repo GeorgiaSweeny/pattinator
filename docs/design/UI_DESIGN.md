@@ -100,7 +100,7 @@ delivered interface). As of 2026-08-18:
   table, not bespoke code per generator the way the discontinued mockup
   only ever built this for Grid Tessellation), falling back to the real
   final output for stages with no distinct, cheaply-producible
-  intermediate look. See `docs/plan-checklist.md`'s Aug 21 entry for the
+  intermediate look. See `docs/planning/plan-checklist.md`'s Aug 21 entry for the
   full mechanism and how each generator's own stage was handled.
 * The Documentation Panel's "Visual Example" is a small live render of the
   selected node's own current intermediate state (the same `PatternCanvas`
@@ -120,10 +120,10 @@ delivered interface). As of 2026-08-18:
   alongside the image, so a favourite output can be re-imported into the
   Featured tab later without guessing its params back out of the pixels.
 
-See `docs/plan-checklist.md`'s Sep 1 entry for the full build (including a
+See `docs/planning/plan-checklist.md`'s Sep 1 entry for the full build (including a
 `fitView` cold-load reliability fix found while testing this) and rationale.
 
-**Still deliberately deferred** (tracked in `docs/plan-checklist.md`'s
+**Still deliberately deferred** (tracked in `docs/planning/plan-checklist.md`'s
 priorities, not a gap in this pass):
 
 * An editable Workspace-dimensions control and canvas zoom/pan — both listed

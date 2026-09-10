@@ -62,7 +62,7 @@ const REGISTRY_BY_CATEGORY = groupByCategory(REGISTRY);
 // Documentation Panel (middle), Pattern Canvas + workflow graph (right).
 // Node selection is single-node-at-a-time — selecting a node highlights it,
 // shows its params inline, and drives what the canvas renders (see
-// stagePreview.js and PatternCanvas.jsx). See docs/UI_DESIGN.md for the
+// stagePreview.js and PatternCanvas.jsx). See docs/design/UI_DESIGN.md for the
 // full layout rationale.
 export default function App() {
    const [selectedId, setSelectedId] = useState(REGISTRY[0].id);

@@ -12,8 +12,6 @@ src/exports/
 
 # Dated project-planning docs kept local, not part of the public repo
 # history (2026-08-23 decision).
-docs/EINSTEIN_APERIODIC_STRETCH.md
-docs/VORONOI_ESCHER_HYBRID_PLAN.md
 docs/evaluation/study2-quiz-implementation-plan.md
 
 # Build output and local tool config — never meant to be committed.
@@ -25,7 +23,7 @@ docs/evaluation/exports/*.json
 docs/evaluation/exports/study2/*.json
 /study2results/
 /Study2_Participant_Instructions.pdf
-docs/Study2_Participant_Instructions.docx
+docs/evaluation/Study2_Participant_Instructions.docx
 /study intruction pics/
 
 # Third-party reference material kept locally, not redistributed from this repo.

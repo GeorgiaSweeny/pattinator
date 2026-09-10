@@ -131,7 +131,7 @@ const PARAM_NODE_MAP = {
  * because some params change the graph's own shape (e.g. recursive's `depth`
  * controls how many Subdivide nodes appear, wave's `mode` toggles Distance
  * Field in/out), so the graph must react to the same live state the canvas
- * render does (docs/UI_DESIGN.md's Synchronised Interaction section).
+ * render does (docs/design/UI_DESIGN.md's Synchronised Interaction section).
  */
 export function buildWorkflow(registryId, liveParams = {}) {
    const entry = REGISTRY.find((e) => e.id === registryId);

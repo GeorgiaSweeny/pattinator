@@ -83,7 +83,7 @@ Outstanding from this phase (not blocking, tracked for later):
       UI_DESIGN.md workflow (Rotate/Translate/Repeat X/Repeat Y) didn't match
       `grid.js`'s real implementation — resolved by adding the `Lattice Index`
       node + `lib/latticeIndex.js`, refactoring `grid.js` to use it, and
-      correcting `docs/UI_DESIGN.md`'s worked example to the real 5-step
+      correcting `docs/design/UI_DESIGN.md`'s worked example to the real 5-step
       workflow (same for every shape). Also decomposed `noise.js`'s fold and
       `recursive.js`'s repeat into generic, independently tested `lib/`
       primitives (`fold.js`, `repeat.js`) while auditing the library.
@@ -184,7 +184,7 @@ Completed Aug 11.
       explanatory note `UI_DESIGN.md`'s Parameter Editing section requires
       (`WorkflowNode.jsx`). All three verified live via Playwright.
 - [x] Documentation pass to support the dissertation write-up: new
-      `docs/ISLAMIC_PATTERN_CONSTRUCTION.md` records what the "Maths to
+      `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` records what the "Maths to
       Magic" paper actually specifies vs. what this codebase does and why
       (see the investigation above); corrected two code comments
       (`islamic.js`, `starPolygon.js`) that mis-cited the paper's Figures
@@ -307,7 +307,7 @@ single continuous parameter for the entropy/structure metric sweep below.
       won't-complete the same day, as redundant with `voronoiIslamic.js`).
       Full research plan, design decisions (raster proxy vs true Voronoi
       polygon construction), predicted compositional structure, and
-      references recorded in `docs/VORONOI_ESCHER_HYBRID_PLAN.md` (kept
+      references recorded in `docs/research-plans/VORONOI_ESCHER_HYBRID_PLAN.md` (kept
       local, same as the other dated planning docs) before any code was
       written. Not scheduled — candidate for "if time permits," alongside
       the aperiodic-monotile stretch goal.
@@ -324,8 +324,8 @@ single continuous parameter for the entropy/structure metric sweep below.
       the ReactFlow workflow would need: Metatile Substitution, Tile
       Instantiation, reused Distance Field/Colour Mapping), five identified
       gaps, and phased milestones all recorded in
-      `docs/EINSTEIN_APERIODIC_STRETCH.md` before any code was written
-      (mirroring how `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` preceded the
+      `docs/research-plans/EINSTEIN_APERIODIC_STRETCH.md` before any code was written
+      (mirroring how `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` preceded the
       Voronoi/Islamic hybrid, but this one is deliberately *not* a build
       plan — no milestones started, no registry entry committed). Headline
       finding: the construction needs a map-one-to-many rewrite over a
@@ -336,7 +336,7 @@ single continuous parameter for the entropy/structure metric sweep below.
       already lists independently. Also identified: no spatial-index
       primitive exists for the resulting per-pixel lookup cost, and the
       project's deliberately linear, non-branching node graph
-      (`docs/UI_DESIGN.md`) has no way to visually expose the substitution
+      (`docs/design/UI_DESIGN.md`) has no way to visually expose the substitution
       rule's own branching the way Fork already does for escher/islamic.
       §7 of that document also works out the test suite this would need —
       grounded in Grünbaum & Shephard's edge-to-edge tiling definition and
@@ -349,7 +349,7 @@ single continuous parameter for the entropy/structure metric sweep below.
       being sufficient (aperiodicity can be falsified but never fully
       confirmed by a finite-patch test).
       Citations added to `README.md` Future Work and
-      `docs/MOSCOW_PRIORITIES.md` §7 regardless of whether this is ever
+      `docs/planning/MOSCOW_PRIORITIES.md` §7 regardless of whether this is ever
       built, since Craig Kaplan (co-author of both aperiodic-monotile
       papers) is already the most-cited author in this project's existing
       Islamic/Voronoi bibliography.
@@ -369,7 +369,7 @@ single continuous parameter for the entropy/structure metric sweep below.
       original 1916 construction and Mandelbrot (1982)'s self-similar-
       density framing), and `islamic.property.test.js` (backfilled the
       Kaplan & Salesin 2004 citation that already existed in
-      `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`/`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`
+      `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`/`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`
       §8 into the test file itself, which previously had none). Not just
       comments: three new property tests were added where the citation
       implied a genuinely new, falsifiable numeric claim rather than only
@@ -399,14 +399,14 @@ single continuous parameter for the entropy/structure metric sweep below.
       polygon, variable-cell-size radius strategy, uniform vs per-cell-
       randomised construction, self-contained vs neighbour search,
       raster-vs-SVG scope), predicted compositional structure, and phased
-      milestones recorded in `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` before
+      milestones recorded in `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` before
       any code was written. References researched and added the same day
       (§8 of that document): Kaplan's 1999 "Voronoi Diagrams and
       Ornamental Design" (the closest direct precedent found for this
       specific hybrid), Kaplan & Salesin's 2004 "Islamic Star Patterns in
       Absolute Geometry" (the rigorous academic source for "polygons in
       contact" — also backfilled as a correction into
-      `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`, replacing that document's
+      `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`, replacing that document's
       earlier reliance on a Wikipedia citation for the same claim), and
       Okabe et al.'s *Spatial Tessellations* for the nearest-neighbour-
       distance radius heuristic in §3.2. One citation mismatch flagged
@@ -437,7 +437,7 @@ single continuous parameter for the entropy/structure metric sweep below.
 - [x] Entropy/structure metrics measured as composition parameters vary
       (secondary RQ empirical content) — `src/generators/__benchmarks__/
       structureMetrics.js` (`npm run structure-metrics` from `src/`), written
-      up in `docs/structure-metrics-results.md`. Sweeps `recursiveNoise.js`'s
+      up in `docs/results/structure-metrics-results.md`. Sweeps `recursiveNoise.js`'s
       `amplitude` from 0 to 2.0 against two standard metrics (edge density,
       2x2 block-pattern Shannon entropy): both increase monotonically and
       smoothly with `amplitude` — direct quantitative evidence that the
@@ -457,7 +457,7 @@ single continuous parameter for the entropy/structure metric sweep below.
 - [x] Runtime/complexity measured for all generators as grid size scales —
       `src/generators/__benchmarks__/benchmark.js`, `results.json`
 - [x] Parameter sweeps (octaves, numCells, depth) analyzed and written up —
-      `docs/benchmark-results.md`
+      `docs/results/benchmark-results.md`
 - [x] Re-run/extend once the Aug 7-9 hybrid generators exist — `recursiveNoise`
       added to `benchmark.js`'s grid-scaling sweep and a new `amplitude`
       parameter sweep (2026-08-20). Grid scaling: k=0.97 (confirms O(1)
@@ -467,7 +467,7 @@ single continuous parameter for the entropy/structure metric sweep below.
       `amplitude!=0` (the noise-warp branch turns on), then flat again up to
       `amplitude=2.0` — because the branch's cost depends on whether the warp
       runs at all, not on `amplitude`'s magnitude. Write-up:
-      `docs/benchmark-results.md`'s "recursiveNoise: amplitude" section.
+      `docs/results/benchmark-results.md`'s "recursiveNoise: amplitude" section.
 
 ## Aug 11-12: Lightweight evaluation
 
@@ -487,7 +487,7 @@ single continuous parameter for the entropy/structure metric sweep below.
 Outside the 14-day coding window (see Constraints) — raised directly as
 follow-up feedback on the Islamic generator after the Aug 2-6 phase
 closed. Full technical detail for every item below lives in
-`docs/ISLAMIC_PATTERN_CONSTRUCTION.md` (now a long, dated changelog —
+`docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` (now a long, dated changelog —
 this entry is the summary/index into it) and `docs/nodes/WORKFLOWS.md`
 §7; this entry records the shape of the troubleshooting process, not a
 duplicate of the reasoning. 309/309 tests passing at the end (from 225
@@ -834,7 +834,7 @@ a falsifiable baseline in the same style `recursiveNoise.js`'s own
       produces qualitatively different textures (long streaky warps vs.
       fine granular noise), not just a numeric difference.
 - [x] **`voronoi-islamic`: added opt-in per-cell `variation`** — the
-      hybrid's original design (`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`
+      hybrid's original design (`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`
       §3.3) deliberately held `segments`/`rotation` uniform across every
       cell so the "does the same construction generalise to a stochastic
       point source" comparison stayed clean; per-cell randomisation was
@@ -888,7 +888,7 @@ Must-tier gaps were found and closed the same day (a fourth, larger
 Should-tier item — per-node intermediate canvas state — is tracked
 separately, in progress).
 
-- [x] **Evaluation instrument built** (`docs/plan-checklist.md`'s own
+- [x] **Evaluation instrument built** (`docs/planning/plan-checklist.md`'s own
       Aug-11/12 deliverable, previously entirely unbuilt — only two
       planning docs existed in `docs/evaluation/`, no code). New
       `src/app/src/evaluation/` module: `quizContent.js` (12 multiple-choice
@@ -1095,7 +1095,7 @@ reusing more existing structure than a bigger rebuild would have needed.
       distance) — gives a standard, cheap per-pixel proxy for "distance
       to the nearest cell edge" (zero exactly on the boundary, where a
       pixel is equidistant from its two nearest seeds) with no real
-      cell-polygon construction, keeping `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`
+      cell-polygon construction, keeping `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`
       §3.1's own decision intact. Combined with the existing star-
       silhouette line test by OR before banding — a second Fork branch,
       not a new composition pattern; both line sources drawn the same
@@ -1132,7 +1132,7 @@ reusing more existing structure than a bigger rebuild would have needed.
       changes actual pixel output at every nonzero `amplitude` the
       existing `structureMetrics.js` sweep had recorded, so those numbers
       were genuinely stale, unlike the earlier `scale`/`octaves`
-      addition. Re-ran and updated `docs/structure-metrics-results.md`
+      addition. Re-ran and updated `docs/results/structure-metrics-results.md`
       with the new numbers (same qualitative monotonic trend, different
       specific readings). Also extended the sweep to
       `voronoiIslamic.js`'s own `variation` parameter for the first time
@@ -1148,7 +1148,7 @@ reusing more existing structure than a bigger rebuild would have needed.
       Perlin Sierpinski: Repeat whose step now varies with iteration
       index, not just its input — a richer variant than every other
       `lib/repeat.js` use in this codebase), plus follow-up notes in
-      `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` and `docs/nodes/WORKFLOWS.md`
+      `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` and `docs/nodes/WORKFLOWS.md`
       §8-9.
 - [x] Full suite confirmed unaffected in the app layer, as predicted
       (neither fix adds a new param or changes `nativeFormat`): 287/287
@@ -1170,13 +1170,13 @@ happened deliberately, not accidentally.
       gitignored and untracked — confirmed, not re-decided. Additionally
       gitignored (and `git rm --cached` for the three already
       committed): `plan-checklist.md` (this file), `MOSCOW_PRIORITIES.md`,
-      `docs/benchmark-results.md`, `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`,
+      `docs/results/benchmark-results.md`, `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`,
       plus the three never-committed research docs
-      (`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`, `docs/EINSTEIN_APERIODIC_STRETCH.md`,
-      `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`, `docs/structure-metrics-results.md`)
+      (`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`, `docs/research-plans/EINSTEIN_APERIODIC_STRETCH.md`,
+      `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`, `docs/results/structure-metrics-results.md`)
       — all kept local for editing before dissertation reference, per
       the student's explicit decision. `docs/GENERATOR_CONTRACT.md`,
-      `docs/UI_DESIGN.md`, and `docs/design-rationale.md` were considered
+      `docs/design/UI_DESIGN.md`, and `docs/design/design-rationale.md` were considered
       and deliberately kept tracked. `.claude/` and `src/app/dist/` added
       to `.gitignore` as plain hygiene (local tool config and build
       output, never meant to be committed).
@@ -1255,7 +1255,7 @@ Both flagged directly from using the app, not found by testing.
       the floor, one new test confirming level 0 is actually displaced
       at depth > 1) and `docs/nodes/WORKFLOWS.md` §9. Re-ran
       `structureMetrics.js`'s `amplitude` sweep against the new ramp —
-      `docs/structure-metrics-results.md` updated with the new numbers
+      `docs/results/structure-metrics-results.md` updated with the new numbers
       and discussion (entropy now reaches 3.54 bits at `amplitude = 2.0`
       vs. 3.25 bits under the old zero-floor ramp, since no level stays
       fully deterministic any more).
@@ -1362,13 +1362,13 @@ item.
 This ranks what to defer *out of the 14-day coding window* first — it is not
 a statement that deferred items are optional overall. In particular,
 evaluation data collection is a Must for the project as a whole (see
-`docs/MOSCOW_PRIORITIES.md` §5); it's ranked first here only because its
+`docs/planning/MOSCOW_PRIORITIES.md` §5); it's ranked first here only because its
 natural execution window is after the coding deadline, not during it.
 
 Dissertation submission deadline: Sep 11 2026 (confirmed by the student
 2026-08-23; earlier draft of this document used Sep 7 as a self-imposed
 buffer date before the real deadline was confirmed — corrected here and
-in `docs/MOSCOW_PRIORITIES.md` §5, and reflected on the GitHub Project
+in `docs/planning/MOSCOW_PRIORITIES.md` §5, and reflected on the GitHub Project
 board as the "Dissertation submission" milestone, due 2026-09-11).
 
 In order of what to cut or defer first:

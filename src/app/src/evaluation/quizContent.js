@@ -12,7 +12,7 @@ COMPUTATIONAL-THINKING QUIZ CONTENT
 * Study 1 items are `type: "mc"` (implicit default); Study 2 adds
 * image-bearing types ("cause", "predict", "concept-match", "spectrum",
 * "node-select") whose images render live via quizPatterns.js + PatternCanvas
-* rather than pre-rendered files. See docs/APP_IMPLEMENTATION_NOTES.md for
+* rather than pre-rendered files. See docs/design/APP_IMPLEMENTATION_NOTES.md for
 * full methodology and per-type detail.
 */
 

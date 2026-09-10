@@ -4,12 +4,12 @@ This document is the bridge between the node library (`docs/nodes/`), the
 primitive library (`src/generators/lib/`), and the generators actually
 registered in `src/patternRegistry.js` — the original seven (§1-7) plus two
 later hybrids (§8-9). For each generator it states the
-linear node sequence the ReactFlow workflow view (`docs/UI_DESIGN.md`) should
+linear node sequence the ReactFlow workflow view (`docs/design/UI_DESIGN.md`) should
 render, cross-checked against what the generator's source code actually
 computes — not the aspirational description in `README.md` or
 `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`.
 
-Each workflow follows `docs/UI_DESIGN.md`'s rules: primarily linear, nodes
+Each workflow follows `docs/design/UI_DESIGN.md`'s rules: primarily linear, nodes
 hidden (not shown as no-ops) when the current parameter values don't need
 them, one node per meaningful conceptual stage. Every node named below has an
 entry in `docs/nodes/`; a **Gap** callout marks anywhere the code needs
@@ -86,7 +86,7 @@ Workspace → Base Geometry (shape) → Lattice Index → Colour Mapping → Ren
 diamond) — resolved from what used to be the most significant gap in this
 document.
 
-**Gap, now closed.** `docs/UI_DESIGN.md` used to document Grid Tessellation
+**Gap, now closed.** `docs/design/UI_DESIGN.md` used to document Grid Tessellation
 (triangle) as an 8-step `Workspace → Base Geometry → Rotate → Translate →
 Repeat X → Repeat Y → Colour Mapping → Render` sequence, conditionally
 shortened per shape. But `grid.js` never called anything resembling Rotate,
@@ -119,12 +119,12 @@ resolution was a new, distinct node:
   tiling" — genuinely one node, since every shape's computation has the same
   shape (position → coordinate change → index), even though the coordinate
   change itself differs per shape.
-- Updated `docs/UI_DESIGN.md`'s worked example (both "Algorithm Workflow" and
+- Updated `docs/design/UI_DESIGN.md`'s worked example (both "Algorithm Workflow" and
   "Stepping Through Algorithms") to the accurate 4-step sequence above, with
   no more per-shape conditional Rotate/Translate nodes.
 
 This was the plan's highest-flagged overrun risk for the Aug 2–6 ReactFlow
-block (`docs/plan-checklist.md`) — resolved before that block starts, not
+block (`docs/planning/plan-checklist.md`) — resolved before that block starts, not
 discovered mid-build.
 
 ---
@@ -205,7 +205,7 @@ since the page's real content is diagrams a text extraction can't carry
 it implements the piece of real, independently-verifiable geometry his
 method and every basic rosette share: the whole star+petal shape is
 *one* silhouette with *one* proportioning relationship, not independently
-chosen radii. See `docs/ISLAMIC_PATTERN_CONSTRUCTION.md` for the full
+chosen radii. See `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` for the full
 account, including the sanity check that clinched it: the new
 construction's waist/tip radius ratio at `segments = 5` comes out to
 exactly `1/phi^2` (~0.382), the well-known golden-ratio proportion of a
@@ -225,7 +225,7 @@ boolean-clipping the overlap at tile edges. That pipeline is built for an
 is maximum controllable variety within a shape-grammar system.
 
 That is not this project's brief. `docs/PROJECT_SPECIFICATION.md` and
-`docs/UI_DESIGN.md` are explicit that this application "should not function
+`docs/design/UI_DESIGN.md` are explicit that this application "should not function
 as a visual programming language" and users "cannot construct arbitrary node
 graphs" — each generator is one fixed, curated workflow, not a shape-grammar
 authoring surface. Reproducing the Houdini tool's boolean-CSG shape grammar
@@ -288,7 +288,7 @@ deterministic one (Islamic) — differing only in which node feeds it points.
   rendered shape and always lands on one of this shape's own reflection
   axes, alternating between a tip-up and a waist-up reading of the same
   star (e.g. `segments = 4`: diamond <-> square). See
-  `docs/ISLAMIC_PATTERN_CONSTRUCTION.md` for the full reasoning, including
+  `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` for the full reasoning, including
   why the first, more literal reading of the request (snap to `360/n`)
   was flagged back rather than implemented as asked.
   `docs/nodes/pattern/radial-divisions.md` also already existed for this.
@@ -335,7 +335,7 @@ deterministic one (Islamic) — differing only in which node feeds it points.
   bands between echoes with
   alternating tones instead; that read as a dense op-art texture for
   most `segments` below 8, not an Islamic geometric pattern — real ones
-  are thin line-work on a plain ground, not solid fills. Reworked; see `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`. Band 0 (the
+  are thin line-work on a plain ground, not solid fills. Reworked; see `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`. Band 0 (the
   medallion's own boundary) always uses the darkest declared tone; every
   other echo cycles through whichever tones are left, via
   `lib/colourMapping.js`'s shared `bandTone(shades, bandIndex)` — fixing
@@ -399,7 +399,7 @@ could evaluate the exact same ring geometry per pixel instead of stroking
 it as SVG, letting that hybrid's raster output be compared fairly against
 what Islamic Geometric Patterns itself actually renders. See
 `islamic-svg.js`'s header comment for the full reasoning and
-`docs/ISLAMIC_PATTERN_CONSTRUCTION.md` for the visual debugging history.
+`docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` for the visual debugging history.
 Verified visually against the raster renderer across `segments` 5-10.
 
 `islamic-svg.js` stays greyscale by design, matching every other
@@ -444,7 +444,7 @@ palette is a small swap of that one conversion, not a rewrite.
     different from `grid.js`'s flat tiling (`docs/nodes/computation/lattice-index.md`):
     a plain tiling's colour only depends on one level's cell, `recursive.js`'s
     `grid` mode depends on every level's cell.
-- The stepping-through-algorithm view (`docs/UI_DESIGN.md`) shows this as
+- The stepping-through-algorithm view (`docs/design/UI_DESIGN.md`) shows this as
   `depth` repeated Subdivide steps, each one level deeper, rather than one
   node evaluated once — the recursion *is* the thing being taught here, in
   both modes.
@@ -488,7 +488,7 @@ Workspace → Seed → Seed Points → Construction Circle → Radial Divisions 
 ```
 
 Full design rationale recorded, before implementation, in
-`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` — this section only summarises the
+`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` — this section only summarises the
 built workflow. The research question: does the "which cell → build a
 rosette there" pipeline behind Islamic Geometric Patterns (§6 above)
 generalise from Grid's regular lattice to Seed Points' stochastic point
@@ -535,7 +535,7 @@ Voronoi tiling has no repeating unit an SVG `<pattern>` could exploit the
 way `islamic-svg.js`'s tile-based one does, so an SVG renderer would need
 to draw each cell's own clip polygon individually (reusing
 `voronoi-svg.js`'s existing half-plane clipping). Scoped out as a stretch
-goal (`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` §3.5/M5), not required to
+goal (`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` §3.5/M5), not required to
 answer the compositional question this hybrid was built to test.
 
 **`variation` (opt-in, default 0)** lets each cell's own
@@ -709,7 +709,7 @@ representable, in the order this document surfaces them:
 | `wave.js`'s plain-sine leaf had no corresponding node | Added `Waveform` node + `lib/waveform.js`; `wave.js` refactored to use it |
 | Islamic Geometric Patterns had no generator or workflow yet | Added `islamic.js` + `lib/constructionCircle.js` (Construction Circle, Radial Divisions — docs already existed) |
 | `docs/nodes/core/mirror.md` and `docs/nodes/core/scale.md` were empty stub files; their content was accidentally all filed under `docs/nodes/core/translate.md` | Split back into one file per node, matching `docs/nodes/README.md`'s taxonomy |
-| Grid's documented UI_DESIGN.md workflow (Rotate/Translate/Repeat X/Repeat Y) didn't match `grid.js`'s actual closed-form-arithmetic implementation | Added `Lattice Index` node + `lib/latticeIndex.js`; `grid.js` refactored to use it, `grid.property.test.js` passes unchanged; `docs/UI_DESIGN.md`'s worked example corrected to the real 5-step workflow |
+| Grid's documented UI_DESIGN.md workflow (Rotate/Translate/Repeat X/Repeat Y) didn't match `grid.js`'s actual closed-form-arithmetic implementation | Added `Lattice Index` node + `lib/latticeIndex.js`; `grid.js` refactored to use it, `grid.property.test.js` passes unchanged; `docs/design/UI_DESIGN.md`'s worked example corrected to the real 5-step workflow |
 | Base Geometry and Base Tile were two node docs covering the same "Escher's starting shape" concept | Retired `pattern/base-tile.md`; `core/base-geometry.md` now states Escher's case explicitly |
 | Noise's fBm fold, and Recursive's recursion, weren't decomposed into standalone `lib/` primitives (fold/repeat as generic combinators) | Added `lib/fold.js` (`foldOctaves`) and `lib/repeat.js` (`repeat`); both generators refactored to use them, both existing property-test suites pass unchanged, both combinators additionally unit-tested independently |
 | `recursive.js`'s `mode` param had no effect, so Sierpinski Carpet and Recursive Grid rendered identical workflows/output under different names | Gave `grid` mode its own step function (parity accumulation instead of centre-cell exclusion) — genuinely different output, proven self-similar the same way `sierpinski` is; see §7 |

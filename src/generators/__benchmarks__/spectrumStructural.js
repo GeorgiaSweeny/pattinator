@@ -5,7 +5,7 @@ SPECTRUM METRICS — STRUCTURAL SCORE (derived from the composition table)
 * spectrumMetrics.js checks the declared `spectrum` value (patternRegistry.js)
 * empirically, by measuring how much a generator's actual output changes
 * under re-seeding. That alone is not a reliable definition on its own —
-* see spectrum-metrics-results.md's Voronoi discussion: an empirically
+* see docs/results/spectrum-metrics-results.md's Voronoi discussion: an empirically
 * seed-sensitive generator (Voronoi) can still be "hybrid", not "stochastic",
 * under this dissertation's own pattern definition (1.2), because what
 * matters is whether the RULE governing the output is fixed once a random
@@ -46,7 +46,7 @@ SPECTRUM METRICS — STRUCTURAL SCORE (derived from the composition table)
 * the composition *should* predict, so the two can be cross-referenced.
 *
 * Run with: npm run spectrum-structural (from src/). Writes raw results to
-* __benchmarks__/spectrumStructural.results.json; docs/spectrum-structural-results.md
+* __benchmarks__/spectrumStructural.results.json; docs/results/spectrum-structural-results.md
 * holds the interpreted numbers and discussion.
 */
 import { readFileSync, writeFileSync, existsSync } from "node:fs";

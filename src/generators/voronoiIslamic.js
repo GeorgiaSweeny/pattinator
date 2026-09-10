@@ -7,7 +7,7 @@ VORONOI-SEEDED ISLAMIC TILING (HYBRID)
 * silhouette pipeline. See docs/generators/voronoi-islamic.md for the
 * research question (does islamic.js's construction generalise from a
 * regular grid to an irregular point source) and full design reasoning
-* in docs/VORONOI_ISLAMIC_HYBRID_PLAN.md.
+* in docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md.
 *
 * Implementation notes not covered by the doc:
 * - A cell's centre is just its seed point (nearestPoint's `index`) — no

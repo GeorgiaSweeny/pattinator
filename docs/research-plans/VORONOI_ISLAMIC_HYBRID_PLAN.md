@@ -8,7 +8,7 @@ to be reconstructed after the fact from commits and test diffs — the
 sections below record the research question, the design space actually
 considered, and the reasoning behind the choices made, in that order,
 following the same-day discussion that selected this hybrid over the
-alternatives in `docs/plan-checklist.md`'s deferred list (a Voronoi-
+alternatives in `docs/planning/plan-checklist.md`'s deferred list (a Voronoi-
 seeded Escher tessellation, and a noise/reaction-diffusion-driven
 Islamic pattern). References researched and added the same day (§8) —
 see that section for how each source is actually load-bearing against a
@@ -70,7 +70,7 @@ session) answered a related question for the primary RQ with the
 opposite mix: the accurate construction reused an existing *pattern*
 (Fork, previously unique to `escher.js`) but needed *four* new
 primitives (`pointInPolygon`, `lineIntersect`, `starOutline`,
-`bandTone`) to get there — see `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`
+`bandTone`) to get there — see `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`
 and `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`'s composition table.
 
 A Voronoi-seeded Islamic tiling is chosen over the two alternatives
@@ -226,7 +226,7 @@ having to choose only one for the dissertation write-up.
 **Decision: self-contained**, matching the current (2026-08-20)
 `islamic.js` design rather than its earlier, superseded neighbour-
 searching `star-lines` construction (see
-`docs/ISLAMIC_PATTERN_CONSTRUCTION.md`'s "Final construction" section
+`docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`'s "Final construction" section
 for why that was retired even for the regular grid). With `radius`
 chosen conservatively relative to actual local cell size (§3.2, v2
 especially), each rosette should stay within its own cell without
@@ -307,7 +307,7 @@ process.
    totality at the registry's declared extremes (mirrors this session's
    own "check the full declared param range, not just the values
    already spot-checked" lesson from the Islamic rebuild's `segments`
-   3-16 bugs — see `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`).
+   3-16 bugs — see `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`).
 3. **M3 — v2 radius (nearest-neighbour-derived).** Only after M1/M2
    establish the rest of the pipeline works; isolates whether any
    visual/structural problems come from the pipeline shape or from the
@@ -393,7 +393,7 @@ adding anything, rather than assembled independently of it.
   The rigorous academic source for Hankin's "polygons in contact"
   method — cited here (§1, §3) as the proper grounding for the
   deterministic side of this hybrid's construction, replacing the
-  Wikipedia article `docs/ISLAMIC_PATTERN_CONSTRUCTION.md` relied on
+  Wikipedia article `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md` relied on
   for the same underlying claim (its own "one polygon of a specific
   size sets its own star" framing) when the 2026-08-20 `starSkip`
   fix was made — see that document's own note on the update.
@@ -429,16 +429,8 @@ adding anything, rather than assembled independently of it.
   *this* document is §3.3's tension between a locally-symmetric motif
   (the rosette, with its own dihedral symmetry — see this same
   session's `rotation` feature and its `180/n` reflection-axis
-  argument in `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`) and a globally
+  argument in `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`) and a globally
   asymmetric, stochastic placement (the Voronoi cells) — worth a
   paragraph in the write-up framed in this book's own symmetry-group
   vocabulary rather than reasoned about informally.
 
-One correction flagged against the existing bibliography, not
-addressed here since it's outside this document's own scope: the
-existing entry "Kaplan, C.S., & Salesin, D.H. (2000). *Diagrams,
-L-systems, and procedural pattern generation*" does not match any
-paper found — Kaplan and Salesin's actual 2000 paper is
-"Escherization" (SIGGRAPH 2000), a different topic (fitting a shape to
-an isohedral tiling, not Islamic patterns). Worth checking the
-original source for that entry before the write-up cites it.

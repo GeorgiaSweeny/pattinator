@@ -50,13 +50,13 @@ gives a numeric worked example for 6-, 7-, 8- or 10-fold stars.
 *mechanism* (radial symmetry generated from a deterministic construction),
 not a reproduction of its *method* (translate-rotate-boolean CSG). This scope
 decision is independently motivated and already documented in
-`docs/UI_DESIGN.md` and `docs/nodes/WORKFLOWS.md` §7: this project's node
+`docs/design/UI_DESIGN.md` and `docs/nodes/WORKFLOWS.md` §7: this project's node
 model is pure per-pixel functions (`docs/GENERATOR_CONTRACT.md`'s
 `(x, y, params) => value` contract), and CSG boolean union has no natural
 expression in that contract — there is no "shape" object to union, only a
 scalar value per pixel. Full shape-grammar authoring is also explicitly out
 of scope for the project's educational-node interface
-(`docs/UI_DESIGN.md`: "users cannot construct new algorithms").
+(`docs/design/UI_DESIGN.md`: "users cannot construct new algorithms").
 
 Two modes, both built on the same `Radial Divisions` point ring
 (`lib/constructionCircle.js`):
@@ -601,7 +601,7 @@ constant (SVG offset geometry, not raster banding — see below). The
   **Kaplan, C.S. & Salesin, D.H. (2004). "Islamic Star Patterns in
   Absolute Geometry." *ACM Transactions on Graphics*, 23(2), 97–119**
   instead, found while researching references for
-  `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` — see that fix's own
+  `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` — see that fix's own
   section below for the correction in full.
 
 ## `segments` 3 and 4, and hexagon tiling
@@ -826,7 +826,7 @@ Wikipedia was a convenient, immediately-fetchable source at the time,
 but not the right one to cite in the dissertation write-up for a claim
 about "polygons in contact" — the actual academic source, found while
 researching references for the Voronoi-Islamic hybrid
-(`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`), is:
+(`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`), is:
 
 > Kaplan, C.S. & Salesin, D.H. (2004). "Islamic Star Patterns in
 > Absolute Geometry." *ACM Transactions on Graphics*, 23(2), 97–119.

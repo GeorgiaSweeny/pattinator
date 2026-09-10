@@ -8,7 +8,7 @@ DISTANCE FIELD
 */
 
 // Brute-force nearest-point search (O(points.length) per query — see
-// docs/benchmark-results.md for the measured cost as numCells scales).
+// docs/results/benchmark-results.md for the measured cost as numCells scales).
 export function nearestPoint(x, y, points) {
    let minDistSq = Infinity, nearestIndex = 0;
    for (let i = 0; i < points.length; i += 2) {

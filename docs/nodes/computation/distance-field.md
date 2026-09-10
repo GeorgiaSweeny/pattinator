@@ -52,7 +52,7 @@ rebuild) to get *signed* distance to a star-polygon silhouette's own
 boundary edges (`lib/starPolygon.js`'s `starOutline`) — negative inside,
 positive outside — which Colour Mapping then bands into concentric rings
 anchored at the true rosette edge. See `docs/nodes/WORKFLOWS.md` §7 and
-`docs/ISLAMIC_PATTERN_CONSTRUCTION.md`.
+`docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`.
 
 ### Falloff
 

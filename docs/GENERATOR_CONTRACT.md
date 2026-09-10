@@ -67,8 +67,8 @@ corresponding to exactly one node documented in `docs/nodes/`:
 |-------------------------|----------------------------|-------------------------------|
 | `rng.js`                | Seed                       | `noise.js` (via `Perlin`), `voronoi.js`, `voronoiIslamic.js` (per-cell `cellVariation` jitter, `islamic.js`'s own `xorshift32Unit` re-derivation) |
 | `fold.js` (`foldOctaves`) | Noise (`docs/nodes/core/noise.md`) | `noise.js` |
-| `seedPoints.js`         | Seed Points                 | `voronoi.js`, `voronoiIslamic.js` (`generateSeedPoints`; also `nearestNeighbourDistances`, added for `voronoiIslamic.js`'s per-cell radius, section 3.2 of `docs/VORONOI_ISLAMIC_HYBRID_PLAN.md`) |
-| `distanceField.js`      | Distance Field              | `voronoi.js` (`nearestPoint`), `wave.js` (`distanceToPoint`), `islamic.js`/`voronoiIslamic.js` (`nearestSegmentDistSq`, `pointInPolygon` — the latter added for `islamic.js`'s 2026-08-20 rebuild, see `docs/ISLAMIC_PATTERN_CONSTRUCTION.md`) |
+| `seedPoints.js`         | Seed Points                 | `voronoi.js`, `voronoiIslamic.js` (`generateSeedPoints`; also `nearestNeighbourDistances`, added for `voronoiIslamic.js`'s per-cell radius, section 3.2 of `docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md`) |
+| `distanceField.js`      | Distance Field              | `voronoi.js` (`nearestPoint`), `wave.js` (`distanceToPoint`), `islamic.js`/`voronoiIslamic.js` (`nearestSegmentDistSq`, `pointInPolygon` — the latter added for `islamic.js`'s 2026-08-20 rebuild, see `docs/generators/ISLAMIC_PATTERN_CONSTRUCTION.md`) |
 | `partition.js`          | Partition                    | (available; not yet consumed — `grid.js` was checked against it and found to need `latticeIndex.js` instead, see `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md` open question 1) |
 | `colourMapping.js`      | Colour Mapping               | `grid.js`, `voronoi.js`, `escher.js`, `islamic.js`, `voronoiIslamic.js` (`toneSet`/`bandTone`); `svgFillsFor`/`DEFAULT_COLOURS`/`mixHex`/`hexToRgb` (added 2026-08-21 for user-editable colours) additionally used by every `*-svg.js` renderer and `render.js`'s `mapColour` (the raster-pattern equivalent of `svgFillsFor`) |
 | `edgeDeformation.js`    | Edge Deformation             | `escher.js`                   |
@@ -105,7 +105,7 @@ above needed to change to allow it; `recursiveNoise.js` is registered in
 free, same as every other pattern.
 
 `voronoiIslamic.js` (the second hybrid — see
-`docs/VORONOI_ISLAMIC_HYBRID_PLAN.md` and `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`'s
+`docs/research-plans/VORONOI_ISLAMIC_HYBRID_PLAN.md` and `docs/ALGORITHMIC_COMPOSITION_RESEARCH.md`'s
 composition table) is reuse of a different shape again: rather than
 importing another generator's exported function, it imports `islamic.js`'s
 own exported `snapRotation` and re-implements `islamic.js`'s remaining
